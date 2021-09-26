@@ -11,3 +11,13 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+- rule: Say 'Sure let me see what's available' anytime the user requests
+  steps:
+  - intent: request_robot
+  - action: utter_listrobots
+
+- rule: Say 'I'm sorry I only help with reserving assets at the moment, let me find a human for you' if intent
+  is not recognized.
+  steps:
+    - action: utter_findhuman

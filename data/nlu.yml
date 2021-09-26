@@ -11,7 +11,6 @@ nlu:
     - good evening
     - moin
     - hey there
-    - let's go
     - hey dude
     - goodmorning
     - goodevening
@@ -30,6 +29,8 @@ nlu:
     - see you around
     - bye bye
     - see you later
+    - thank you
+    - thanks!
 
 - intent: affirm
   examples: |
@@ -39,6 +40,9 @@ nlu:
     - of course
     - that sounds good
     - correct
+    - yeah
+    - sure
+    - sounds good
 
 - intent: deny
   examples: |
@@ -50,56 +54,38 @@ nlu:
     - no way
     - not really
 
-#- intent: request_robot
-#  examples: |
-#    - Could I borrow a robot to do a test?
-#    - Can I borrow one robot for a quick test?
-#    - Any robots available for testing?
-#    - Can I borrow a robot
-#    - Can I borrow one of the robots for a test?
-#    - Would I please be able to borrow any robot?
-#    - Can I borrow robot_class_A or robot_class_B for a bit?
-#    - looking to borrow a O100
-#    - I'd like to borrow
-#    - Would I be able to borrow
-#    - Can I please
-#    - Could I please
-#    - need to borrow robot_A for a test
-#    - I need to borrow
+- intent: request_robot
+  examples: |
+    - could I borrow a robot to do a test?
+    - can I borrow one robot for a quick test?
+    - any robots available for testing?
+    - mind if I borrow
+    - can I borrow one of the robots
+    - would I please be able to borrow any robot
+    - can I borrow robot_class_A or robot_class_B for a bit
+    - looking to borrow a O100
+    - I'd like to borrow
+    - would I be able to borrow
+    - can I please
+    - could I please
+    - need to borrow robot_class_A for a test
+    - I need to borrow
+    - is robot_class_A available to borrow
 
-#- intent: request_avail_check
-#  examples: |
-#    - is someone using it?
-#    - is someone borrowing it?
-#    - any robot_A available?
-#    - feeling like a king
-#    - wonderful
-#    - I am feeling very good
-#    - I am great
-#    - I am amazing
-#    - I am going to save the world
-#    - super stoked
-#    - extremely good
-#    - so so perfect
-#    - so good
-#    - so perfect
-#
-#- intent: mood_unhappy
-#  examples: |
-#    - my day was horrible
-#    - I am sad
-#    - I don't feel very well
-#    - I am disappointed
-#    - super sad
-#    - I'm so sad
-#    - sad
-#    - very sad
-#    - unhappy
-#    - not good
-#    - not very good
-#    - extremly sad
-#    - so saad
-#    - so sad
+- intent: request_avail_check
+  examples: |
+    - is someone using it?
+    - is someone borrowing it?
+    - any robot available?
+    - are there any robots available?
+    - is robot_class_A still being used?
+
+- intent: request_reserve_asset
+  examples: |
+    - could I reserve robot_class_A for 2:30pm?
+    - can I reserve a robot please
+    - would I be able to reserve
+    - is there a robot_class_A I could reserve
 
 - intent: bot_challenge
   examples: |
@@ -107,3 +93,4 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+    - are you human?
