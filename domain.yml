@@ -5,30 +5,62 @@ intents:
   - goodbye
   - affirm
   - deny
-  - mood_great
-  - mood_unhappy
+  - nonspecific_robot_request
+  - request_specific_robot
+  - out_of_scope
   - bot_challenge
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
+  - text: "Hey! How can I help you today?"
+  - text: "What can I do for you today?"
 
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
+  utter_avail:
+  - text: "Here's what I have available:"
+  - text: "Here are the current assets available:"
 
-  utter_did_that_help:
-  - text: "Did that help you?"
+  utter_reserve_confirmation:
+  - text: "Confirming selection is [robot_hostname]"
+  - text: "Confirming this is the robot you want"
 
-  utter_happy:
-  - text: "Great, carry on!"
+  utter_park:
+  - text: "Parking requested vehicle"
+  - text: "Parking [robot_hostname]"
+  - text: "Parking [robot_hostname]"
+
+  utter_find_human:
+  - text: "That doesn't look like something I'm equipped to answer. Let me find someone who can."
+  - text: "Hmm.. not sure if I understand your request. Paging human.."
+  - text: "I'm not entirely sure how I can answer this. Let me find someone who can"
+  - text: "This.. looks like something maybe someone from the test team could answer"
+
+  utter_none_available:
+  - text: "Sorry this robot is either reserved or offline"
+  - text: "The one you've requested is not available. Perhaps try another time? "
 
   utter_goodbye:
   - text: "Bye"
+  - text: "Goodbye"
+
+  utter_yw:
+  - text: "You're welcome!"
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
+  - text: "Yes, I am a bot, powered by Rasa"
 
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+
+entities:
+  - robot
+
+forms:
+  reserve_robot_form:
+    ignored_intents:
+      - out_of_scope
+    required_slots:
+      robot:
+        - type: from_entity
+          entity: robot

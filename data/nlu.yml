@@ -20,8 +20,6 @@ nlu:
   examples: |
     - good afternoon
     - c u
-    - good by
-    - cee you later
     - good night
     - bye
     - goodbye
@@ -54,38 +52,40 @@ nlu:
     - no way
     - not really
 
-- intent: request_robot
+- regex: robot
   examples: |
-    - could I borrow a robot to do a test?
-    - can I borrow one robot for a quick test?
-    - any robots available for testing?
-    - mind if I borrow
-    - can I borrow one of the robots
-    - would I please be able to borrow any robot
-    - can I borrow robot_class_A or robot_class_B for a bit
-    - looking to borrow a O100
-    - I'd like to borrow
-    - would I be able to borrow
-    - can I please
-    - could I please
-    - need to borrow robot_class_A for a test
-    - I need to borrow
-    - is robot_class_A available to borrow
+    - \S*\d+\S
 
-- intent: request_avail_check
+- intent: nonspecific_robot_request
   examples: |
-    - is someone using it?
-    - is someone borrowing it?
-    - any robot available?
-    - are there any robots available?
-    - is robot_class_A still being used?
+    - could I borrow a [robot]{"entity":"robot"} to do a test?
+    - can I borrow one [robot]{"entity":"robot"} for a quick test?
+    - any [robots]{"entity":"robot"} available for testing?
+    - can I borrow one of the [robots]{"entity":"robot"}
+    - would I please be able to borrow any [robot]{"entity":"robot"}
+    - can I borrow [rocksteady]{"entity":"robot", "group":"rocksteady"} or [rzr]{"entity":"robot","group":"rzr"} for a bit
+    - looking to borrow a [O100]{"entity":"robot", "group":"rzr"}
+    - could I please borrow [moon]{"entity":"robot", "group":"rocksteady","value":"v2.0"} for a test
+    - need to borrow [rzr]{"entity":"robot","group":"rzr"} for a test
+    - is there a [robot]{"entity":"robot"} available to borrow
 
-- intent: request_reserve_asset
+- intent: request_specific_robot
   examples: |
-    - could I reserve robot_class_A for 2:30pm?
-    - can I reserve a robot please
-    - would I be able to reserve
-    - is there a robot_class_A I could reserve
+    - can I borrow [omega-94]{"entity":"robot", "group":"omega","value":"MkIV"}
+    - I need to borrow [cpe22-38]{"entity": "robot", "group": "rocksteady", "value": "v1.2"}
+    - would I be able to borrow [strk-94]{"entity":"robot", "group":"omega","value":"MkIV"}
+    - I'd like to borrow [moon-5]{"entity":"robot", "group":"rocksteady", "value":"v2.0"}
+    - mind if I borrow [cpe51-13]{"entity":"robot", "group":"rocksteady", "value":"v2.0"}
+    - any [2.4s]{"entity":"robot", "group":"rzr","value":"v2.4"} available?
+    - are there any [2.5s]{"entity":"robot", "group":"rzr","value":"v2.5"} I could borrow
+
+- intent: out_of_scope
+  examples: |
+    - what's the weather like today?
+    - Do you know why [moon-5]{"entity":"robot", "group":"rocksteady", "value":"v2.0"} is paused?
+    - Is there a party on the test floor?
+    - what's wrong with your conveyor?
+    - Btw, [moon-5]{"entity":"robot", "group":"rocksteady", "value":"v2.0"} seems to be misbehaving in the charger
 
 - intent: bot_challenge
   examples: |

@@ -12,12 +12,14 @@ rules:
   - intent: bot_challenge
   - action: utter_iamabot
 
-- rule: Say 'Sure let me see what's available' anytime the user requests
+- rule: reserve robot form
   steps:
-  - intent: request_robot
-  - action: utter_listrobots
+  - intent: nonspecific_robot_request
+  - action: reserve_robot_form
+  - active_loop: null
+  - action: reserve_robot_form
 
-- rule: Say 'I'm sorry I only help with reserving assets at the moment, let me find a human for you' if intent
-  is not recognized.
+- rule: out of scope
   steps:
-    - action: utter_findhuman
+  - intent: out_of_scope
+  - action: utter_find_human
